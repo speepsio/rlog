@@ -1,0 +1,229 @@
+;-----[ channel setup   ]-----
+
+type = obd
+protocolid = 6 ; ISO15765
+
+
+;-----[ uds setup (rom patch REQUIRED for mode 0x23 functionality) ]-----
+
+mode23txaddrwidth = 4
+mode23txlenwidth = 2
+mode23rxaddrwidth = 0
+
+
+;-----[ logable parameters ]-----
+
+;select = x
+paramname = APP
+;description = Accel Pedal Position (full range)
+mode = 0x22
+paramid = 0x1340
+databits = 8
+scalingrpn = x,0.39215684,*
+;scaling = A*0.39215684
+;units = %
+
+;select = x
+paramname = BARO
+;description = Barometric Pressure
+mode = 0x01
+paramid = 0x33
+databits = 8
+sampgroup = 1
+;scaling = A
+;units = kPa
+
+;select = x
+paramname = ECT
+;description = Engine Coolant Temp
+mode = 0x01
+paramid = 0x05
+databits = 8
+scalingrpn = x,40,-
+sampgroup = 1
+;scaling = A-40
+;units = C
+
+;select = x
+paramname = EGRP_STEPS
+;description = EGR Purge Steps
+mode = 0x22
+paramid = 0x98E
+databits = 16
+;units = steps
+
+;select = x
+paramname = EQ_RATIO_ACT
+;description = Air Fuel Equivalence Ratio (λ) Actual
+mode = 0x01
+paramid = 0x34
+databits = 32
+scalingrpn = x,0.00001525878906,*,0.000030517578,*
+;scaling = ((A*256)+B)*0.000030517578
+;units = lambda
+
+;select = x
+paramname = ETC_DSD
+;description = Throttle Position Desired (duty)
+mode = 0x01
+paramid = 0x4C
+databits = 8
+scalingrpn = x,0.39215684,*
+;scaling = A*0.39215684
+;units = %
+
+;select = x
+paramname = FUEL_PW
+;description = Injector Fuel Pulse Width
+mode = 0x22
+paramid = 0x1410
+databits = 16
+scalingrpn = x,0.0079999994,*
+;scaling = ((A*256)+B)*0.0079999994
+;units = ms
+
+;select = x
+paramname = FUELSYS
+;description = Fuel System Status
+mode = 0x01
+paramid = 0x03
+databits = 16
+scalingrpn = x,0.00390625,*
+
+;select = x
+paramname = HIDET_SW
+;description = High Detonation Switch
+mode = 0x22
+paramid = 0x1706
+databits = 1
+offsetbits = 0
+sampgroup = 1
+;units = off / on
+
+;select = x
+paramname = IAT
+;description = Intake Air Temperature
+mode = 0x01
+paramid = 0x0F
+databits = 8
+scalingrpn = x,40,-
+;scaling = A-40
+sampgroup = 1
+;units = C
+
+;select = x
+paramname = KNOCKR
+;description = Knock Retard
+mode = 0x22
+paramid = 0x1746
+databits = 8
+scalingrpn = x,0.3521126761,*
+;scaling = A*0.3521126761
+;units = (retard)°
+
+;select = x
+paramname = LOAD
+;description = Load Absolute
+mode = 0x01
+paramid = 0x43
+databits = 16
+scalingrpn = x,0.0039215684,*
+;scaling = ((A*256)+B)*0.0039215684
+;units = g/rev
+
+;select = x
+paramname = LTFT
+;description = Long Term Fuel Trim
+mode = 0x01
+paramid = 0x07
+databits = 8
+scalingrpn = x,0.78125,*,100,-
+;scaling = A*0.78125-100
+;units = %
+
+;select = x
+paramname = MAF
+;description = Mass Air-Flow 
+mode = 0x01
+paramid = 0x10
+databits = 16
+scalingrpn = x,0.0099999998,*
+;scaling = ((A*256)+B)*0.0099999998
+;units = g/sec
+
+;select = x
+paramname = MAP
+;description = Manifold Absolute Pressure
+mode = 0x01
+paramid = 0x0B
+databits = 8
+;units = kPa
+
+;select = x
+paramname = O2S12_FT
+;description = Rear O2 Sensor Fuel Trim
+mode = 0x22
+paramid = 0x163E
+databits = 16
+scalingrpn = x,0.012207031,*
+;scaling = ((A*256)+B)*0.012207031
+;units = %
+
+;select = x
+paramname = RPM
+;description = Engine RPM
+mode = 0x01
+paramid = 0x0C
+databits = 16
+scalingrpn = x,0.25,*
+;scaling = ((A*256)+B)*0.25
+;units = rpm
+
+;select = x
+paramname = SPARKADV
+;description = Ignition Timing Advance
+mode = 0x01
+paramid = 0x0E
+databits = 8
+scalingrpn = x,0.5,*,64,-
+;scaling = (A*0.5)-64
+;units = (angle)
+
+;select = x
+paramname = STFT
+;description = Short Term Fuel Trim
+mode = 0x01
+paramid = 0x06
+databits = 8
+scalingrpn = x,0.78125,*,100,-
+;scaling = A*0.78125-100
+;units = %
+
+;select = x
+paramname = VCT_ACT
+;description = Valve Timing Actual
+mode = 0x22
+paramid = 0x16CD
+databits = 16
+scalingrpn = x,0.0625,*
+;scaling = ((A*256)+B)*0.0625
+;units = °
+
+;select = x
+paramname = VPWR
+;description = Control Module Voltage
+mode = 0x01
+paramid = 0x42
+databits = 16
+sampgroup = 1
+scalingrpn = x,0.00099999993,*
+;scaling = ((A*256)+B)*0.00099999993
+;units = V
+
+;select = x
+paramname = VSS
+;description = Vehicle Speed Sensor
+mode = 0x01
+paramid = 0x0D
+databits = 8
+;units = km/h
